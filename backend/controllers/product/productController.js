@@ -1,44 +1,53 @@
 import asyncHandler from "express-async-handler";
 import Product from "../../modals/productModel.js";
+import { fileSizeFormatter } from "../../utils/fileUpload.js";
+
 // import { fileSizeFormatter } from "../../utils/fileUpload.js";
-import { v2 as cloudinary } from "cloudinary";
+// import { v2 as cloudinary } from "cloudinary";
 
 // Create Prouct
 const createProduct = asyncHandler(async (req, res) => {
   const { name, sku, category, quantity, price, description } = req.body;
-
+console.log(req.body)
   //   Validation
-  if (!name || !category || !quantity || !price || !description) {
+  if (!name ) {
     res.status(400);
-    throw new Error("Please fill in all fields");
+    throw new Error("name required");
   }
-
+  if ( !category ) {
+    res.status(400);
+    throw new Error("category required");
+  }
+  if ( !quantity) {
+    res.status(400);
+    throw new Error("quantity required");
+  }
+  if ( !price ) {
+    res.status(400);
+    throw new Error("price required");
+  }
+  if ( !description) {
+    res.status(400);
+    throw new Error("description required");
+  }
   // Handle Image upload
   let fileData = {};
   if (req.file) {
-    // Save image to cloudinary
-    let uploadedFile;
-    try {
-      uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-        folder: "Pinvent App",
-        resource_type: "image",
-      });
-    } catch (error) {
-      res.status(500);
-      throw new Error("Image could not be uploaded");
-    }
+  
+    
 
     fileData = {
       fileName: req.file.originalname,
-      filePath: uploadedFile.secure_url,
+      filePath: req.file.path,
       fileType: req.file.mimetype,
       fileSize: fileSizeFormatter(req.file.size, 2),
     };
   }
 
   // Create Product
+ 
   const product = await Product.create({
-    user: req.user.id,
+    user: '650fe20b0db4e3698403ac62',
     name,
     sku,
     category,

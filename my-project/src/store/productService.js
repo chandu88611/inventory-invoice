@@ -1,12 +1,17 @@
 import axios from "axios";
 
-const BACKEND_URL = "http://localhost:19977/";
+const BACKEND_URL = "http://localhost:19977";
 
-const API_URL = `${BACKEND_URL}/api/products/`;
+const API_URL = `${BACKEND_URL}/api/products`;
 
 // Create New Product
 const createProduct = async (formData) => {
-  const response = await axios.post(API_URL,formData);
+  const response = await axios.post(API_URL,formData,{
+    headers:{
+      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
+    }
+  });
   return response.data;
 };
 
