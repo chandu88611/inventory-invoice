@@ -1,0 +1,28 @@
+/* Width and height for scrollbar track */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+}
+
+/* Track (the background of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color of the scrollbar track */
+}
+
+/* Handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  background: #cac7c7; /* Background color of the scrollbar handle */
+  border-radius: 6px; /* Rounded corners for the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Background color of the scrollbar handle when hovered */
+}
+
+.card {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
