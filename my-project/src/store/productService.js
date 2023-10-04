@@ -12,6 +12,7 @@ const createProduct = async (formData) => {
       'Content-Type': 'multipart/form-data',
     }
   });
+  
   return response.data;
 };
 
