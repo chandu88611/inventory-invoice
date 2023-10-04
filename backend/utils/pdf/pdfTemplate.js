@@ -263,7 +263,6 @@ export default function ({
      </section>
    </div>
  </body>
-
 </html>
 	
 	`;
